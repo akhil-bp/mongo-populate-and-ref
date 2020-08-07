@@ -8,6 +8,14 @@ module.exports.getUser = (query) => {
     return User.findOne(query).lean().exec();
 };
 
+module.exports.getUserWithRole = (query) => {
+    return User.findOne(query)
+        .populate('role_id')
+        .populate('address')
+        .lean().exec();
+
+};
+
 module.exports.getUsers = (query) => {
     return User.find(query).lean().exec();
 };
